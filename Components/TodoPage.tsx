@@ -30,46 +30,48 @@ const TodoPage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 md:px-40 lg:px-72">
-      <h1 className="text-3xl font-bold mb-4">To-Do App</h1>
-      <div className="flex mb-4">
-        <input
-          type="text"
-          className="py-2 px-3 border border-gray-300 rounded-l-md w-full"
-          placeholder="Enter a task"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-r-md"
-          onClick={handleAddTask}
-        >
-          Add
-        </button>
-      </div>
-      <ul className="divide-y divide-gray-300">
-        {tasks.map((task) => (
-          <li
-            key={task.id}
-            className={`flex items-center justify-between py-3 ${task.completed ? 'bg-gray-100' : ''
-              }`}
+    <>
+      <div className="container mx-auto mt-8 md:px-40 lg:px-72">
+        <h1 className="text-3xl font-bold mb-4">To-Do App</h1>
+        <div className="flex mb-4">
+          <input
+            type="text"
+            className="py-2 px-3 border border-gray-300 rounded-l-md w-full"
+            placeholder="Enter a task"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded-r-md"
+            onClick={handleAddTask}
           >
-            <span
-              className={`cursor-pointer ${task.completed ? 'line-through text-gray-500' : ''}`}
-              onClick={() => handleToggleCompletion(task.id)}
+            Add
+          </button>
+        </div>
+        <ul className="divide-y divide-gray-300">
+          {tasks.map((task) => (
+            <li
+              key={task.id}
+              className={`flex items-center justify-between py-3 ${task.completed ? 'bg-gray-100' : ''
+                }`}
             >
-              {task.text}
-            </span>
-            <button
-              className="text-red-500"
-              onClick={() => handleDeleteTask(task.id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+              <span
+                className={`cursor-pointer ${task.completed ? 'line-through text-gray-500' : ''}`}
+                onClick={() => handleToggleCompletion(task.id)}
+              >
+                {task.text}
+              </span>
+              <button
+                className="text-red-500"
+                onClick={() => handleDeleteTask(task.id)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
